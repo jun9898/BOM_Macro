@@ -6,6 +6,7 @@ readData = pd.read_excel("C:/macro_test/test_1.xlsx")
 print(readData)
 print()
 
+# 생산오더 등록 메크로
 mouse_x, mouse_y = pyautogui.position() # 마우스 x, y 좌표를 전달받는다
 
 for i in readData.index: #readData 값만큼 반복, (72, 71코드만 index 값으로 받는 방법을 찾아야함)
