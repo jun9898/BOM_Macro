@@ -1,3 +1,5 @@
+from tkinter import *
+import keyboard
 import pandas as pd
 import pyautogui
 import keyboard
@@ -5,7 +7,6 @@ import os
 from tkinter import *
 from tkinter import filedialog, messagebox
 import configparser
-
 
 # 파일 선택 함수.
 def select_file():
@@ -20,14 +21,9 @@ def select_file():
         
 
 # 경로 설정하는 함수를 만들어야 한다.
-def pathSetting():
-    readData = pd.read_excel("C:/JBJ/macro_test/test_1.xlsx")
-    print(readData)
-    print()
 
-# 메크로가 실행되었을때 작동하는 함수.
 def mecroStart():
-    readData = pd.read_excel("C:/JBJ/macro_test/test_1.xlsx")
+    readData = pd.read_excel(g_add_file_path)
     print(readData)
     print()
 
@@ -85,6 +81,7 @@ def mecroStart():
         else:
             continue
 
+
 def mecroStart2():
     x, y = pyautogui.position()
     for i in range(21):
@@ -112,19 +109,18 @@ def mecroStart2():
         pyautogui.click()
         y = y+25.4
 
+def on_key_press(event):
+    if event.keysym == 'F5':
+        mecroStart()
+    elif event.keysym == 'F6':
+        mecroStart2()
 
-
-# main frame
 def main():
-
-    
     root = Tk()
     root.title("파일명 변경(대흥소프트밀-전병준)")
     root.geometry("450x250")
 
     # file frame
-    root.bind("<Key>", on_key_press)
-    root.pack()
     file_frame = Frame(root)
     file_frame.pack(fill="x", padx=5, pady=15)
 
@@ -171,16 +167,8 @@ def main():
     break_btn = Button(frame_end, text="닫기", width=10, padx=5, command=root.quit)
     break_btn.pack(side="right")
 
-    if keyboard.is_pressed("f5"):
-        mecroStart
-
-    if keyboard.is_pressed("f6"):
-        mecroStart2
-
-    frame.bind("<Key>", on_key_press)
-    frame.pack()
-
-    frame.focus_set()
+    # Bind key press events
+    root.bind("<Key>", on_key_press)
 
     # Start GUI event loop
     root.mainloop()
