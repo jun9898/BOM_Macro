@@ -4,8 +4,9 @@ import keyboard
 # 라벨발행 메크로
 x, y = pyautogui.position()
 for i in range(21):
-    if keyboard.is_pressed("space"):
+    if keyboard.is_pressed('ESC'):
         break
+
 # while True
     pyautogui.moveTo(852, y )
     pyautogui.click()
