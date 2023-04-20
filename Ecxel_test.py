@@ -14,9 +14,9 @@ for i in readData.index: #readData 값만큼 반복, (72, 71코드만 index 값�
         break
     # pyautogui.moveTo(mouse_x, mouse_y)
     pyautogui.doubleClick()
-    BOM_y = (i, readData['test1'][i]) #test1 항목에는 엑셀의 BOM이 위치해있는 항목을 기입해준다. ex) 항목코드
-    Materials_y = (i, readData['test2'][i]) #test2 항목에는 엑셀의 원자재 코드가 위치해있는 항목을 기입해준다. ex) 항목코드
-    Amout_y = (i, readData['test3'][i]) #test3 항목에는 엑셀의 수량이 위치해있는 항목을 기입해준다. ex) 항목코드
+    BOM_y = (i, readData['test1'][i]) #test1 항목에는 엑셀의 BOM이 위치해있는 항목을 기입해준다. 
+    Materials_y = (i, readData['test2'][i]) #test2 항목에는 엑셀의 원자재 코드가 위치해있는 항목을 기입해준다.
+    Amout_y = (i, readData['test3'][i]) #test3 항목에는 엑셀의 수량이 위치해있는 항목을 기입해준다.
 
     str_BOM_y = str(BOM_y[1])
     str_Materials_y= str(Materials_y[1])
