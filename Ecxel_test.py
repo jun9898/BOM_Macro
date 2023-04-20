@@ -52,4 +52,4 @@ for i in readData.index: #readData 값만큼 반복, (72, 71코드만 index 값�
         pyautogui.press('enter')
         pyautogui.press(['left', 'left', 'left', 'left', 'down'])
         pyautogui.press('enter')
-    
+        print("test")
