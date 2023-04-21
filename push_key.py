@@ -11,6 +11,7 @@ import configparser
 # 파일 선택 함수.
 def select_file():
     global g_add_file_path
+    global g_add_file_path
     file_selected = filedialog.askopenfilename(initialdir="/", title="Select file",filetypes=(("Excel files","*.xls"),("all files","*.*")))
     g_add_file_path = file_selected # 선택한 파일 경로를 g_add_file_list에 넣는다.
     file_path_label.config(text=g_add_file_path)
@@ -29,21 +30,25 @@ def mecroStart():
 
     # 생산오더 등록 메크로
     mouse_x, mouse_y = pyautogui.position() # 마우스 x, y 좌표를 전달받는다
+    size_get = g_size_entry.get()
+    size = int (size_get)
+    
 
     for i in readData.index: #readData 값만큼 반복, (72, 71코드만 index 값으로 받는 방법을 찾아야함)
         if keyboard.is_pressed('ESC'):
             break
     
-        BOM_y = (i, readData['test1'][i]) #test1 항목에는 엑셀의 BOM이 위치해있는 항목을 기입해준다. 
-        Materials_y = (i, readData['test2'][i]) #test2 항목에는 엑셀의 원자재 코드가 위치해있는 항목을 기입해준다.
-        Amout_y = (i, readData['test3'][i]) #test3 항목에는 엑셀의 수량이 위치해있는 항목을 기입해준다.
+        BOM_y = (i, readData['시스템코드'][i]) #test1 항목에는 엑셀의 BOM이 위치해있는 항목을 기입해준다. 
+        Materials_y = (i, readData['원자제 투입 품목'][i]) #test2 항목에는 엑셀의 원자재 코드가 위치해있는 항목을 기입해준다.
+        Amout_y = (i, readData['총소요량'][i]) #test3 항목에는 엑셀의 수량이 위치해있는 항목을 기입해준다.
 
         str_BOM_y = str(BOM_y[1])
         str_Materials_y= str(Materials_y[1])
-        str_Amout_y = str(Amout_y[1])
+        int_Amout_y = int(Amout_y[1])
         print(str_BOM_y)
 
-        if "71" or "72" in (str_BOM_y): # BOM 안에 71과 72 문자열이 존재해야 아래 코드를 실행시킨다.
+        if "71" in (str_BOM_y) or "72" in (str_BOM_y):
+            # "71" or "72" in (str_BOM_y): # BOM 안에 71과 72 문자열이 존재해야 아래 코드를 실행시킨다.
             pyautogui.doubleClick()
             str_BOM_y_replace = str_BOM_y.replace("72", "70")
             pyautogui.write("%s" % str_BOM_y_replace)
@@ -60,7 +65,7 @@ def mecroStart():
             pyautogui.doubleClick()
 
             pyautogui.press('right')
-            pyautogui.write("%s" % str_Amout_y)
+            pyautogui.write("%d" % (int_Amout_y*size))
 
             if mouse_y > 970:
                 mouse_y == 984
@@ -78,8 +83,6 @@ def mecroStart():
                 pyautogui.press(['left', 'left', 'left', 'left', 'down'])
                 pyautogui.press('enter')
                 print("test")
-        else:
-            continue
 
 
 def mecroStart2():
@@ -118,36 +121,51 @@ def on_key_press(event):
 def main():
     root = Tk()
     root.title("파일명 변경(대흥소프트밀-전병준)")
-    root.geometry("450x250")
+    root.geometry("650x150")
+    root.resizable(False, False)
+
+    global file_path_label
 
     # file frame
     file_frame = Frame(root)
-    file_frame.pack(fill="x", padx=5, pady=15)
+    file_frame.pack(fill="x", padx=5, pady=(5, 0))
 
     select_folder_button = Button(file_frame, padx=5,pady=3, width=12, text="폴더 선택", command=select_file)
     select_folder_button.pack(side="left")
 
-    file_path_Frame = LabelFrame(file_frame, text="path", relief="ridge",height=70, borderwidth=1, padx=8)
+    # file path frame
+    file_path_Frame = LabelFrame(file_frame, text="path", relief="ridge", borderwidth=1, padx=5)
     file_path_Frame.pack(side="left", fill="both", expand=True)
 
-    global file_path_label
-    file_path_label = Label(file_path_Frame,text="", width=80)
+
+    file_path_label = Label(file_path_Frame, text="", width=80)
     file_path_label.pack(side="left")
+
+    # size entry frame
+    size_entry_Frame = LabelFrame(file_frame, text="size", relief="ridge", height=50, borderwidth=1, padx=5)
+    size_entry_Frame.pack(side="left", padx=(10,5))
+
+    global g_size_entry
+    g_size_entry = Entry(size_entry_Frame, width=10)
+    g_size_entry.pack(side="left")
+
+    # disable automatic resizing of file_path_Frame
+    file_path_Frame.pack_propagate(False)
 
     # list frame
     list_frame = Frame(root)
-    list_frame.pack(fill="both", padx=5, pady=5)
+    list_frame.pack(fill="both", padx=5, pady=(0, 5))
 
 
     # entry frame
     frame_word = LabelFrame(root, text="생산 오더 등록", relief="ridge", borderwidth=2, padx=5)
-    frame_word.pack()
+    frame_word.pack(side="left", padx=5)
 
     frame_word2 = LabelFrame(root, text="라벨 발행",relief="ridge", borderwidth=2, padx=5)
-    frame_word2.pack()
+    frame_word2.pack(side="left", padx=5)
 
     frame_word3 = LabelFrame(root, text="중지",relief="ridge", borderwidth=2, padx=5)
-    frame_word3.pack()
+    frame_word3.pack(side="left", padx=5)
 
     # entry word
     lbl_width = Label(frame_word, text=" F5 ", width=20)
