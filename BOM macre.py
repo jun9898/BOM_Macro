@@ -51,7 +51,7 @@ def mecroStart():
             # "71" or "72" in (str_BOM_y): # BOM 안에 71과 72 문자열이 존재해야 아래 코드를 실행시킨다.
             pyautogui.doubleClick()
             str_BOM_y_replace = str_BOM_y.replace("72", "70")
-            pyautogui.write("%s" % str_BOM_y_replace)
+            pyautogui.write(str_BOM_y_replace)
             pyautogui.hotkey('ctrl', 'f') # ctrl+f
             pyautogui.moveTo(808, 567)
             pyautogui.doubleClick()
