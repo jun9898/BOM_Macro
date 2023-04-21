@@ -142,7 +142,7 @@ def main():
     file_path_label.pack(side="left")
 
     # size entry frame
-    size_entry_Frame = LabelFrame(file_frame, text="size", relief="ridge", height=50, borderwidth=1, padx=5)
+    size_entry_Frame = LabelFrame(file_frame, text="set", relief="ridge", height=50, borderwidth=1, padx=5)
     size_entry_Frame.pack(side="left", padx=(10,5))
 
     global g_size_entry
