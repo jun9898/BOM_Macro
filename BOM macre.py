@@ -2,7 +2,6 @@ from tkinter import *
 import keyboard
 import pandas as pd
 import pyautogui
-import keyboard
 import os
 from tkinter import *
 from tkinter import filedialog, messagebox
