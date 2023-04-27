@@ -2,7 +2,11 @@ from tkinter import *
 import keyboard
 import pandas as pd
 import pyautogui
+<<<<<<< HEAD:BOM_macro.py
 import keyboard
+=======
+import os
+>>>>>>> 2be526a57493ffaa1b606ab13cd1ff4d5aa7a8b0:BOM macre.py
 from tkinter import *
 from tkinter import filedialog, messagebox
 
