@@ -43,7 +43,9 @@ def mecroStart():
         str_BOM_y = str(BOM_y[1])
         str_Materials_y= str(Materials_y[1])
         int_Amout_y = int(Amout_y[1])
-        print(str_BOM_y)
+
+        if int_Amout_y == 0:
+            continue
 
         if "71" in (str_BOM_y) or "72" in (str_BOM_y):
             # "71" or "72" in (str_BOM_y): # BOM 안에 71과 72 문자열이 존재해야 아래 코드를 실행시킨다.
