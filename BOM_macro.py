@@ -3,10 +3,8 @@ import keyboard
 import pandas as pd
 import pyautogui
 import keyboard
-import os
 from tkinter import *
 from tkinter import filedialog, messagebox
-import configparser
 
 # 파일 선택 함수.
 def select_file():
@@ -39,7 +37,7 @@ def mecroStart():
             break
     
         BOM_y = (i, readData['시스템코드'][i]) #test1 항목에는 엑셀의 BOM이 위치해있는 항목을 기입해준다. 
-        Materials_y = (i, readData['원자제 투입 품목'][i]) #test2 항목에는 엑셀의 원자재 코드가 위치해있는 항목을 기입해준다.
+        Materials_y = (i, readData['규격'][i]) #test2 항목에는 엑셀의 원자재 코드가 위치해있는 항목을 기입해준다.
         Amout_y = (i, readData['총소요량'][i]) #test3 항목에는 엑셀의 수량이 위치해있는 항목을 기입해준다.
 
         str_BOM_y = str(BOM_y[1])
@@ -92,7 +90,7 @@ def mecroStart2():
             break
 
     # while True
-        pyautogui.moveTo(852, y )
+        pyautogui.moveTo(x, y )
         pyautogui.click()
         pyautogui.moveTo(1136, 138)
         pyautogui.click()
