@@ -1,4 +1,4 @@
-# macro_test
+# BOM_Macro
 
 
 ![ezgif com-video-to-gif](https://github.com/jun9898/macro_test/assets/129564528/f10fef4e-8e1b-41e2-a0de-0238a2754ca2)
