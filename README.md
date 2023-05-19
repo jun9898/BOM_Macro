@@ -1,7 +1,8 @@
 # BOM_Macro
 
 
-![ezgif com-video-to-gif (1)](https://github.com/jun9898/macro_test/assets/129564528/751ed3a5-ae85-454f-b456-f9df8d459162)
+![ezgif com-video-to-gif](https://github.com/jun9898/BOM_Macro/assets/129564528/689728dd-38ca-4c4e-91b6-9cff6ffd1a76)
+
 
 위의 gif처럼 부품 하나하나의 BOM을 가져와 MES에 입력하는 형식으로 아주 많은 시간을 필요로 하는 번거로운 작업을 자동화하였다.
 
