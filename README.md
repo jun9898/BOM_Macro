@@ -1,13 +1,15 @@
 # BOM_Macro
 
 
-![ezgif com-video-to-gif](https://github.com/jun9898/BOM_Macro/assets/129564528/689728dd-38ca-4c4e-91b6-9cff6ffd1a76)
+![ezgif com-video-to-gif](https://github.com/jun9898/BOM_Macro/assets/129564528/7ccd7260-8c86-4b8b-aefe-88e1e26aa3b7)
+
 
 
 위의 gif처럼 부품 하나하나의 BOM을 가져와 MES에 입력하는 형식으로 아주 많은 시간을 필요로 하는 번거로운 작업을 자동화하였다.
 
 
-![ezgif com-video-to-gif (1)](https://github.com/jun9898/BOM_Macro/assets/129564528/33718ef4-0672-46d1-9dfb-e8509083cf06)
+![ezgif com-video-to-gif (1)](https://github.com/jun9898/BOM_Macro/assets/129564528/704d1aa6-69c7-4270-9ac4-144ae084761c)
+
 
 
 위드 파일을 불러오는 pandas와 pyautogui의 메크로 기능을 사용해 간단한 작업을 반복하는 메크로를 만들었다.
