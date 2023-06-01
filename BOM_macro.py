@@ -3,8 +3,7 @@ import keyboard
 import pandas as pd
 import pyautogui
 import keyboard
-from tkinter import *
-from tkinter import filedialog, messagebox
+from tkinter import filedialog
 
 # 파일 선택 함수.
 def select_file():
@@ -36,9 +35,9 @@ def mecroStart():
         if keyboard.is_pressed('ESC'):
             break
     
-        BOM_y = (i, readData['시스템코드'][i]) #test1 항목에는 엑셀의 BOM이 위치해있는 항목을 기입해준다. 
-        Materials_y = (i, readData['규격'][i]) #test2 항목에는 엑셀의 원자재 코드가 위치해있는 항목을 기입해준다.
-        Amout_y = (i, readData['총소요량'][i]) #test3 항목에는 엑셀의 수량이 위치해있는 항목을 기입해준다.
+        BOM_y = (i, readData['시스템코드'][i]) #시스템 코드 항목에는 엑셀의 BOM이 위치해있는 항목을 기입해준다. 
+        Materials_y = (i, readData['규격'][i]) #규격 항목에는 엑셀의 원자재 코드가 위치해있는 항목을 기입해준다.
+        Amout_y = (i, readData['총소요량'][i]) #총소요량 항목에는 엑셀의 수량이 위치해있는 항목을 기입해준다.
 
         str_BOM_y = str(BOM_y[1])
         str_Materials_y= str(Materials_y[1])
@@ -67,6 +66,7 @@ def mecroStart():
             pyautogui.press('right')
             pyautogui.write("%d" % (int_Amout_y*size))
 
+            # 마우스 커서가 MES칸을 넘어가면 y값을 고정시킨다.
             if mouse_y > 970:
                 mouse_y == 984
                 pyautogui.moveTo(176, 98)
@@ -74,7 +74,8 @@ def mecroStart():
                 pyautogui.press('enter')
                 pyautogui.press(['left', 'left', 'left', 'left', 'down'])
                 pyautogui.press('enter')
-                continue
+
+            # 아니라면 y값을 더해줘서 다음 작업을 반복한다.
             else:
                 mouse_y = mouse_y+25.4
                 pyautogui.moveTo(176, 98)
@@ -82,16 +83,14 @@ def mecroStart():
                 pyautogui.press('enter')
                 pyautogui.press(['left', 'left', 'left', 'left', 'down'])
                 pyautogui.press('enter')
-                print("test")
 
 
+# 라벨 발행 메크로
 def mecroStart2():
     x, y = pyautogui.position()
     for i in range(21):
         if keyboard.is_pressed('ESC'):
             break
-
-    # while True
         pyautogui.moveTo(x, y )
         pyautogui.click()
         pyautogui.moveTo(1136, 138)
@@ -105,19 +104,19 @@ def mecroStart2():
         pyautogui.click()
         pyautogui.moveTo(792, 622)
         pyautogui.click()
-        # pyautogui.moveTo(1047, 616)
-        # pyautogui.click()
         pyautogui.press('enter')
         pyautogui.moveTo(852, y )
         pyautogui.click()
         y = y+25.4
 
+# f5 키를 눌렀을때와 f6 키를 눌렀을때 해당 작업을 실행시킨다.
 def on_key_press(event):
     if event.keysym == 'F5':
         mecroStart()
     elif event.keysym == 'F6':
         mecroStart2()
 
+# 인터페이스
 def main():
     root = Tk()
     root.title("파일명 변경(대흥소프트밀-전병준)")
